@@ -1,0 +1,155 @@
+/* ============================================================
+   Nidham HR — نِظام | Design Tokens v1.0
+   Style: Soft UI Evolution · RTL-first · Light + Dark
+   Fonts: Cairo (display) · IBM Plex Sans Arabic (text)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------- Typography ---------- */
+  --font-display: 'Cairo', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --font-text: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-xs: 12px;   /* شارات، تسميات ثانوية فقط — ممنوع للنص الأساسي */
+  --text-sm: 14px;   /* خلايا الجداول، الأزرار */
+  --text-base: 16px; /* النص الأساسي */
+  --text-lg: 18px;
+  --text-xl: 20px;   /* عناوين البطاقات */
+  --text-2xl: 24px;  /* عناوين الصفحات */
+  --text-3xl: 30px;
+  --text-4xl: 38px;  /* عناوين تسويقية */
+  --text-5xl: 48px;  /* هيرو */
+
+  --leading-tight: 1.3;   /* العناوين العربية تحتاج ≥1.3 لعلامات التشكيل */
+  --leading-normal: 1.6;  /* النص العربي يتنفس عند 1.6 */
+  --leading-relaxed: 1.8;
+
+  /* ---------- Spacing (density: dashboard 8–32px) ---------- */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+  --space-12: 48px; --space-16: 64px;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px;
+  --radius-xl: 20px; --radius-full: 9999px;
+
+  /* ---------- Shadows (Soft UI Evolution) ---------- */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.07), 0 2px 4px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.10), 0 4px 8px rgba(15, 23, 42, 0.05);
+  --shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.35);
+
+  /* ---------- Motion ---------- */
+  --duration-fast: 150ms;
+  --duration-normal: 220ms;
+  --duration-slow: 350ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ---------- Semantic: Light ---------- */
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-foreground: #0F172A;
+  --color-foreground-muted: #475569;
+  --color-foreground-subtle: #94A3B8;
+
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-on-primary: #FFFFFF;
+
+  --color-accent: #059669;
+  --color-accent-hover: #047857;
+  --color-on-accent: #FFFFFF;
+
+  --color-border: #E4ECFC;
+  --color-border-strong: #CBD5E1;
+  --color-muted: #F1F5FD;
+
+  --color-success: #059669;
+  --color-success-bg: #ECFDF5;
+  --color-warning: #B45309;
+  --color-warning-bg: #FFFBEB;
+  --color-destructive: #DC2626;
+  --color-destructive-bg: #FEF2F2;
+  --color-ring: #2563EB;
+
+  /* ---------- Components ---------- */
+  --button-height: 40px;
+  --button-height-sm: 32px;
+  --button-height-lg: 48px;
+  --input-height: 40px;
+  --card-padding: var(--space-6);
+  --table-row-height: 44px;   /* ≥44px = هدف لمس مريح */
+  --sidebar-width: 260px;
+  --sidebar-width-collapsed: 68px;
+}
+
+/* ---------- Semantic: Dark ---------- */
+[data-theme='dark'] {
+  --color-background: #0B1120;
+  --color-surface: #1E293B;
+  --color-surface-raised: #243044;
+  --color-foreground: #F1F5F9;
+  --color-foreground-muted: #94A3B8;
+  --color-foreground-subtle: #64748B;
+
+  --color-primary: #60A5FA;
+  --color-primary-hover: #93C5FD;
+  --color-on-primary: #0B1120;
+
+  --color-accent: #10B981;
+  --color-accent-hover: #34D399;
+  --color-on-accent: #06281E;
+
+  --color-border: #2C3A52;
+  --color-border-strong: #475569;
+  --color-muted: #1B2537;
+
+  --color-success: #34D399;
+  --color-success-bg: #0A2E22;
+  --color-warning: #FBBF24;
+  --color-warning-bg: #2E2004;
+  --color-destructive: #F87171;
+  --color-destructive-bg: #3A0F0F;
+  --color-ring: #60A5FA;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.50);
+  --shadow-focus: 0 0 0 3px rgba(96, 165, 250, 0.40);
+}
+
+/* ---------- Base (RTL-first) ---------- */
+html[dir='rtl'] body,
+body[dir='rtl'] {
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-foreground);
+  background: var(--color-background);
+  text-align: right;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

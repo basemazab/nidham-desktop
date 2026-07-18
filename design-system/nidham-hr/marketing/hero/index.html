@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نِظام — إدارة الموارد البشرية بنِظام</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-display: 'Cairo', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --font-text: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-foreground: #0F172A;
+  --color-foreground-muted: #475569;
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-accent: #059669;
+  --color-accent-hover: #047857;
+  --color-border: #E4ECFC;
+  --color-muted: #F1F5FD;
+  --color-success-bg: #ECFDF5;
+  --color-warning: #B45309;
+  --color-warning-bg: #FFFBEB;
+  --color-destructive: #DC2626;
+  --color-destructive-bg: #FEF2F2;
+  --shadow-sm: 0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+  --shadow-md: 0 4px 12px rgba(15,23,42,.07), 0 2px 4px rgba(15,23,42,.04);
+  --shadow-lg: 0 12px 28px rgba(15,23,42,.10), 0 4px 8px rgba(15,23,42,.05);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-text);
+  color: var(--color-foreground);
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(37,99,235,.10), transparent 60%),
+    radial-gradient(700px 400px at 8% 110%, rgba(5,150,105,.07), transparent 60%),
+    var(--color-background);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.container { max-width: 1200px; margin-inline: auto; padding-inline: 32px; }
+
+/* ---------- Nav ---------- */
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-block: 20px;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-mark {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  display: grid; place-items: center;
+  color: #fff; font-family: var(--font-display); font-weight: 900; font-size: 22px;
+  box-shadow: var(--shadow-md);
+}
+.logo-name { font-family: var(--font-display); font-weight: 800; font-size: 24px; }
+.logo-name span { color: var(--color-primary); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--color-foreground-muted);
+  font-size: 15px; font-weight: 500; transition: color .15s;
+}
+.nav-links a:hover { color: var(--color-primary); }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 40px; padding-inline: 20px; border-radius: 10px;
+  background: var(--color-primary); color: #fff;
+  font-family: var(--font-text); font-size: 14px; font-weight: 600;
+  text-decoration: none; box-shadow: var(--shadow-sm); transition: background .15s;
+}
+.nav-cta:hover { background: var(--color-primary-hover); }
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px;
+  align-items: center; padding-block: 56px 72px;
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--color-muted); border: 1px solid var(--color-border);
+  color: var(--color-primary); border-radius: 9999px;
+  padding: 6px 14px; font-size: 13px; font-weight: 600; margin-bottom: 20px;
+}
+.eyebrow svg { width: 14px; height: 14px; }
+h1 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: 52px; line-height: 1.35; letter-spacing: -.5px;
+  margin-bottom: 18px;
+}
+h1 .highlight { color: var(--color-primary); position: relative; }
+.sub {
+  font-size: 19px; color: var(--color-foreground-muted);
+  max-width: 54ch; margin-bottom: 32px; line-height: 1.8;
+}
+.cta-row { display: flex; gap: 14px; align-items: center; margin-bottom: 36px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 52px; padding-inline: 28px; border-radius: 12px;
+  font-family: var(--font-text); font-size: 16px; font-weight: 700;
+  text-decoration: none; transition: all .15s; cursor: pointer;
+}
+.btn svg { width: 20px; height: 20px; }
+.btn-primary {
+  background: var(--color-accent); color: #fff;
+  box-shadow: 0 8px 20px rgba(5,150,105,.28);
+}
+.btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-1px); }
+.btn-secondary {
+  background: var(--color-surface); color: var(--color-foreground);
+  border: 1.5px solid var(--color-border); box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.trust { display: flex; gap: 24px; flex-wrap: wrap; }
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 500; color: var(--color-foreground-muted);
+}
+.trust-item svg { width: 18px; height: 18px; color: var(--color-accent); flex-shrink: 0; }
+
+/* ---------- App mockup ---------- */
+.mockup-wrap { position: relative; }
+.mockup {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 20px; box-shadow: var(--shadow-lg); overflow: hidden;
+}
+.mockup-titlebar {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--color-muted); border-bottom: 1px solid var(--color-border);
+  padding: 10px 16px;
+}
+.mockup-titlebar .dot { width: 11px; height: 11px; border-radius: 50%; background: #CBD5E1; }
+.mockup-titlebar .dot:first-child { background: #FCA5A5; }
+.mockup-titlebar .dot:nth-child(2) { background: #FCD34D; }
+.mockup-titlebar .dot:nth-child(3) { background: #86EFAC; }
+.mockup-titlebar .title { margin-inline-start: auto; font-size: 12px; color: var(--color-foreground-muted); font-weight: 500; }
+.mockup-body { display: grid; grid-template-columns: 168px 1fr; min-height: 380px; }
+.mockup-side {
+  border-inline-end: 1px solid var(--color-border);
+  padding: 14px 10px; background: #FBFDFF;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.side-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 12px; border-radius: 9px;
+  font-size: 13px; font-weight: 500; color: var(--color-foreground-muted);
+}
+.side-item svg { width: 16px; height: 16px; }
+.side-item.active { background: var(--color-primary); color: #fff; font-weight: 600; box-shadow: 0 4px 10px rgba(37,99,235,.25); }
+.mockup-main { padding: 18px 20px; }
+.mockup-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.mockup-header h3 { font-family: var(--font-display); font-size: 16px; font-weight: 800; }
+.mockup-date { font-size: 11px; color: var(--color-foreground-muted); background: var(--color-muted); padding: 4px 10px; border-radius: 9999px; font-weight: 500; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.stat {
+  border: 1px solid var(--color-border); border-radius: 12px; padding: 12px;
+  box-shadow: var(--shadow-sm); background: var(--color-surface);
+}
+.stat .num { font-family: var(--font-display); font-size: 24px; font-weight: 800; line-height: 1.2; }
+.stat .lbl { font-size: 11.5px; color: var(--color-foreground-muted); font-weight: 500; }
+.stat.ok .num { color: var(--color-accent); }
+.stat.warn .num { color: var(--color-warning); }
+.stat.bad .num { color: var(--color-destructive); }
+.mockup-table { border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; }
+.trow {
+  display: grid; grid-template-columns: 1.4fr 1fr .8fr; align-items: center;
+  padding: 9px 14px; font-size: 12.5px; border-bottom: 1px solid var(--color-border);
+}
+.trow:last-child { border-bottom: none; }
+.trow.thead { background: var(--color-muted); font-weight: 700; font-size: 11.5px; color: var(--color-foreground-muted); }
+.emp { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.avatar {
+  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center; color: #fff; font-size: 10px; font-weight: 700;
+}
+.badge {
+  justify-self: start; padding: 2.5px 10px; border-radius: 9999px;
+  font-size: 10.5px; font-weight: 700;
+}
+.badge.ok { color: #047857; background: var(--color-success-bg); }
+.badge.warn { color: var(--color-warning); background: var(--color-warning-bg); }
+.badge.bad { color: var(--color-destructive); background: var(--color-destructive-bg); }
+.time { color: var(--color-foreground-muted); font-weight: 500; }
+
+.float-card {
+  position: absolute; bottom: -24px; inset-inline-start: -28px;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 14px; box-shadow: var(--shadow-lg);
+  padding: 14px 18px; display: flex; align-items: center; gap: 12px;
+}
+.float-icon {
+  width: 40px; height: 40px; border-radius: 11px;
+  background: var(--color-success-bg); color: var(--color-accent);
+  display: grid; place-items: center;
+}
+.float-icon svg { width: 21px; height: 21px; }
+.float-card .t1 { font-size: 13.5px; font-weight: 700; }
+.float-card .t2 { font-size: 12px; color: var(--color-foreground-muted); }
+
+@media (max-width: 980px) {
+  .hero { grid-template-columns: 1fr; }
+  h1 { font-size: 38px; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <div class="logo">
+      <div class="logo-mark">ن</div>
+      <div class="logo-name">نِظام<span>.</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">المميزات</a></li>
+      <li><a href="#">الأسعار</a></li>
+      <li><a href="#">عن نِظام</a></li>
+      <li><a href="#">تواصل معنا</a></li>
+    </ul>
+    <a class="nav-cta" href="#">
+      تحميل التطبيق
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        نظام إدارة موارد بشرية مصري ١٠٠٪
+      </div>
+      <h1>إدارة شؤون موظفيك<br>أصبحت <span class="highlight">بنِظام</span></h1>
+      <p class="sub">حضور وانصراف من أجهزة البصمة، مرتبات محسوبة على قانون العمل المصري، إجازات وتأمينات اجتماعية — كله في تطبيق ديسكتوب واحد، سريع وسهل.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          حمّل النسخة التجريبية مجاناً
+        </a>
+        <a class="btn btn-secondary" href="#">اطلب عرضاً توضيحياً</a>
+      </div>
+      <div class="trust">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          يدعم أجهزة بصمة ZKTeco
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          حسابات التأمينات تلقائياً
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          تحديثات تلقائية مجانية
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup-wrap">
+      <div class="mockup">
+        <div class="mockup-titlebar">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          <div class="title">نِظام — لوحة التحكم</div>
+        </div>
+        <div class="mockup-body">
+          <aside class="mockup-side">
+            <div class="side-item active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+              الرئيسية
+            </div>
+            <div class="side-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              الموظفين
+            </div>
+            <div class="side-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
+              الحضور والانصراف
+            </div>
+            <div class="side-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+              المرتبات
+            </div>
+            <div class="side-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M10 16v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"/><path d="M10 8V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v4"/><path d="M20 16v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1"/><path d="M14 8V7c0-1.1.9-2 2-2h2a2 2 0 0 1 2 2v1"/></svg>
+              الإجازات
+            </div>
+            <div class="side-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+              التقارير
+            </div>
+          </aside>
+          <main class="mockup-main">
+            <div class="mockup-header">
+              <h3>حضور اليوم</h3>
+              <div class="mockup-date">السبت ١٨ يوليو</div>
+            </div>
+            <div class="stats">
+              <div class="stat ok"><div class="num">142</div><div class="lbl">حاضر</div></div>
+              <div class="stat warn"><div class="num">8</div><div class="lbl">متأخر</div></div>
+              <div class="stat bad"><div class="num">5</div><div class="lbl">غائب</div></div>
+            </div>
+            <div class="mockup-table">
+              <div class="trow thead"><div>الموظف</div><div>الوردية</div><div>الحالة</div></div>
+              <div class="trow">
+                <div class="emp"><div class="avatar" style="background:#2563EB">أح</div>أحمد سمير</div>
+                <div class="time">٨:٠٠ ص — ٤:٠٠ م</div>
+                <div class="badge ok">حاضر</div>
+              </div>
+              <div class="trow">
+                <div class="emp"><div class="avatar" style="background:#059669">مر</div>مريم عادل</div>
+                <div class="time">٨:٠٠ ص — ٤:٠٠ م</div>
+                <div class="badge ok">حاضر</div>
+              </div>
+              <div class="trow">
+                <div class="emp"><div class="avatar" style="background:#B45309">كر</div>كريم فتحي</div>
+                <div class="time">٨:٢٥ ص — ٤:٠٠ م</div>
+                <div class="badge warn">متأخر</div>
+              </div>
+              <div class="trow">
+                <div class="emp"><div class="avatar" style="background:#64748B">هش</div>هشام قنديل</div>
+                <div class="time">—</div>
+                <div class="badge bad">غائب</div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div class="float-card">
+        <div class="float-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <div class="t1">تم صرف مرتبات يونيو</div>
+          <div class="t2">155 موظف · في 4 دقائق</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
